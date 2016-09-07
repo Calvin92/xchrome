@@ -1,0 +1,26 @@
+[
+    {
+        "id": "ALL",
+        "name": "所有资讯"
+    },
+    {
+        "id": "UX",
+        "name": "交互设计"
+    },
+    {
+        "id": "UI",
+        "name": "视觉设计"
+    },
+    {
+        "id": "FRONTEND",
+        "name": "Web开发"
+    },
+    {
+        "id": "PRODUCT",
+        "name": "产品创新"
+    },
+    {
+        "id": "USER_RESEARCH",
+        "name": "用户研究"
+    }
+]

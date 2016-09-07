@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0",
+  "name": "AOTULabs",
+  "manifest_version": 2,
+  "description": "A Chrome Extension built by Aotu.io for providing Web Development Staffs",
+  "browser_action": {
+    "default_title": "凹凸实验室",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "img/icon-16.png",
+    "48": "img/icon-48.png",
+    "128": "img/icon-128.png"
+  },
+  "web_accessible_resources": [
+    "inject.html"
+  ],
+  "background": {
+    "page": "background.html"
+  },
+  "chrome_url_overrides": {
+    "pageToOverride": "newtab.html"
+  },
+  "permissions": [ "contextMenus", "tabs", "storage", "https://aotu.io/*" ],
+  "content_security_policy": "default-src 'self'; script-src 'self'; style-src * 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:;"
+}

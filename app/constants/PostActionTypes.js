@@ -1,0 +1,5 @@
+export const READ_POST = 'READ_POST';
+export const READ_ALL = 'READ_ALL';
+export const FILTER_POST = 'FILTER_POST';
+export const FILTER_POST_BY_CHANNEL = 'FILTER_POST_BY_CHANNEL';
+export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
