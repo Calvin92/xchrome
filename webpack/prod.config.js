@@ -30,7 +30,7 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: ['', '.js']
+    extensions: ['', '.js', '.md', '.txt']
   },
   module: {
     loaders: [{

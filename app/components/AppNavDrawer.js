@@ -51,14 +51,13 @@ class AppNavDrawer extends Component {
 
   componentDidMount() {
     const self = this;
-    const url = '/assests/data/channels.json';
+    const url = '/data/channels.json';
     const request = new XMLHttpRequest();
 
     request.onreadystatechange = () => {
       let items = null;
       if (request.readyState === 4 && request.status === 200) {
         items = JSON.parse(request.responseText);
-        console.log('items', items);
         self.setState({
           channels: items,
           channel: items[0],
@@ -103,7 +102,7 @@ class AppNavDrawer extends Component {
         docked={docked}
         open={open}
         onRequestChange={onRequestChangeNavDrawer}
-        containerStyle={{zIndex: zIndex.drawer - 100}}
+        containerStyle={{ zIndex: zIndex.drawer - 100 }}
       >
         <div style={styles.logo} onTouchTap={this.handleTouchTapHeader}>
           AOTULabs

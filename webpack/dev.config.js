@@ -40,7 +40,7 @@ const baseDevConfig = () => ({
     })
   ],
   resolve: {
-    extensions: ['', '.js']
+    extensions: ['', '.js', '.md', '.txt']
   },
   module: {
     loaders: [{
