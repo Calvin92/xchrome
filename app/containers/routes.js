@@ -1,16 +1,13 @@
 import React from 'react';
 import {
   Route,
-  Redirect,
   IndexRoute,
 } from 'react-router';
 
-// Here we define all our material-ui ReactComponents.
-import Master from '../components/Master';
-import Home from '../components/pages/Home';
+require('../components/fonts');
 
-import Community from '../components/pages/discover/Community';
-import About from '../components/pages/discover/About';
+import Home from '../components/layout/home';
+import Posts from '../components/layout/posts';
 
 
 /**
@@ -23,14 +20,9 @@ import About from '../components/pages/discover/About';
  * handler and its parent handler like so: Paper > Components > Master
  */
 const AppRoutes = (
-  <Route path="/" component={Master}>
+  <Route path="/" component={Home}>
     <IndexRoute component={Home} />
-    <Route path="home" component={Home} />
-    <Redirect from="discover" to="/discover/community" />
-    <Route path="discover">
-      <Route path="community" component={Community} />
-      <Route path="about" component={About} />
-    </Route>
+    <Route path="/posts" component={Posts} />
   </Route>
 );
 

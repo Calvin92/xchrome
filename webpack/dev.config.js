@@ -1,5 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const host = 'localhost';
 const port = 3000;
@@ -27,7 +30,22 @@ const baseDevConfig = () => ({
     filename: '[name].bundle.js',
     chunkFilename: '[id].chunk.js'
   },
+  postcss: [autoprefixer],
+  sassLoader: {
+    data: '@import "' + path.resolve(__dirname, '../app/components/theme/_theme.scss') + '";'
+  },
   plugins: [
+    new CopyWebpackPlugin([
+      {
+        from: '../../app/components/fonts/materialicons',
+        to: '../fonts/materialicons'
+      },
+      {
+        from: '../../app/components/fonts/roboto',
+        to: '../fonts/roboto'
+      }
+    ]),
+    new ExtractTextPlugin('../css/[name].css', { allChunks: true }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.IgnorePlugin(/[^/]+\/[\S]+.prod$/),
@@ -40,7 +58,10 @@ const baseDevConfig = () => ({
     })
   ],
   resolve: {
-    extensions: ['', '.js', '.md', '.txt']
+    extensions: ['', '.js', '.md', '.txt', '.json', '.scss'],
+    alias: {
+      'react-toolbox': path.resolve(__dirname, '../node_modules/react-toolbox/lib')
+    },
   },
   module: {
     loaders: [{
@@ -51,19 +72,19 @@ const baseDevConfig = () => ({
         presets: ['react-hmre']
       }
     }, {
-      test: /\.css$/,
-      loaders: [
-        'style',
-        'css?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-        'postcss'
-      ]
+      test: /\.(scss|css)$/,
+      loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass?sourceMap')
     }, {
-      test: /\.md$/,
-      loader: 'raw'
+      test: /\.(md)$/,
+      loader: 'html!highlight!markdown'
     }, {
       test: /\.json$/,
       loader: 'json'
-    }]
+    },
+    { test: /\.svg$/, loader: 'url?limit=65000&mimetype=image/svg+xml&name=[name]-[hash].[ext]' },
+    { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=65000&mimetype=application/font-woff&name=../fonts/[name]-[hash].[ext]' }
+    //{ test: /\.woff2$/, loader: 'url?limit=65000&mimetype=application/font-woff2&name=[name]-[hash].[ext]' }
+    ]
   }
 });
 

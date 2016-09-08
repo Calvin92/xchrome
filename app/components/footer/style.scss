@@ -1,0 +1,14 @@
+@import "../globals";
+.footer {
+  padding: 2 * $unit 0;
+  color: $color-content;
+  text-align: center;
+  background-color: $color-text;
+  .love {
+    font-size: $font-size-normal;
+    color: $color-accent;
+  }
+  small {
+    color: rgba(255,255,255,.5);
+  }
+}
