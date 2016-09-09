@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router';
+//base theme
+import theme from '../../theme/theme.js';
 import Button from 'react-toolbox/button';
 import { Card, CardTitle, CardMedia, CardText, CardActions } from 'react-toolbox/card';
+//custom components
 import Logo from '../../logo';
 import Navigation from '../../navigation';
 import Footer from '../../footer';

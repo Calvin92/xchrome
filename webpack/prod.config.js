@@ -9,9 +9,9 @@ module.exports = {
     inject: [customPath, path.join(__dirname, '../chrome/extension/inject')]
   },
   output: {
-    path: path.join(__dirname, '../build/js'),
-    filename: '[name].bundle.js',
-    chunkFilename: '[id].chunk.js'
+    path: path.join(__dirname, '../build/'),
+    filename: 'js/[name].bundle.js',
+    chunkFilename: 'js/[id].chunk.js'
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),

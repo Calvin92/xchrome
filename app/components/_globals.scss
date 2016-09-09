@@ -1,8 +1,10 @@
-@import "./fonts/style";
+//http://jamesknelson.com/writing-happy-stylesheets-with-webpack/
+//Prevent writing selectors in globals, 
+//it will be imported mutiplly in components and make your finnal bundle files fat and unhealthy.
 @import "~react-toolbox/colors";
 @import "~react-toolbox/globals";
 @import "~react-toolbox/mixins";
-@import "./theme/theme";
+//@import "./theme/theme";
 
 $unit: 1rem;
 $color-primary-dark: $color-primary-dark;

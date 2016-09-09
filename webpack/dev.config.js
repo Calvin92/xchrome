@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+//const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const host = 'localhost';
 const port = 3000;
@@ -16,7 +16,7 @@ const baseDevConfig = () => ({
     background: [customPath, hotScript, path.join(__dirname, '../chrome/extension/background')],
   },
   devMiddleware: {
-    publicPath: `http://${host}:${port}/js`,
+    publicPath: `http://${host}:${port}/`,
     stats: {
       colors: true
     },
@@ -26,26 +26,16 @@ const baseDevConfig = () => ({
     path: '/js/__webpack_hmr'
   },
   output: {
-    path: path.join(__dirname, '../dev/js'),
-    filename: '[name].bundle.js',
-    chunkFilename: '[id].chunk.js'
+    path: path.join(__dirname, '../dev/'),
+    filename: 'js/[name].bundle.js',
+    chunkFilename: 'js/[id].chunk.js'
   },
   postcss: [autoprefixer],
   sassLoader: {
     data: '@import "' + path.resolve(__dirname, '../app/components/theme/_theme.scss') + '";'
   },
   plugins: [
-    new CopyWebpackPlugin([
-      {
-        from: '../../app/components/fonts/materialicons',
-        to: '../fonts/materialicons'
-      },
-      {
-        from: '../../app/components/fonts/roboto',
-        to: '../fonts/roboto'
-      }
-    ]),
-    new ExtractTextPlugin('../css/[name].css', { allChunks: true }),
+    new ExtractTextPlugin('css/[name].css', { allChunks: true }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.IgnorePlugin(/[^/]+\/[\S]+.prod$/),
@@ -64,25 +54,46 @@ const baseDevConfig = () => ({
     },
   },
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loader: 'babel',
-      exclude: /node_modules/,
-      query: {
-        presets: ['react-hmre']
+    loaders: [
+      {
+        test: /\.js$/,
+        loader: 'babel',
+        exclude: /node_modules/,
+        query: {
+          presets: ['react-hmre']
+        }
+      },
+      {
+        test: /\.(scss|css)$/,
+        loader: ExtractTextPlugin.extract(
+          'style',
+          'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!resolve-url!postcss!sass?sourceMap',
+          {
+            publicPath: '../'
+          }
+        )
+      },
+      {
+        test: /\.(md)$/,
+        loader: 'html!highlight!markdown'
+      },
+      {
+        test: /\.json$/,
+        loader: 'json'
+      },
+      {
+        test: /\.svg$/,
+        loader: 'url?limit=65000&mimetype=image/svg+xml&name=[name]-[hash].[ext]'
+      },
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'url',
+        query: {
+          limit: 65000,
+          name: '[name]-[hash].[ext]',
+          path: '../chrome/assets/fonts'
+        }
       }
-    }, {
-      test: /\.(scss|css)$/,
-      loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass?sourceMap')
-    }, {
-      test: /\.(md)$/,
-      loader: 'html!highlight!markdown'
-    }, {
-      test: /\.json$/,
-      loader: 'json'
-    },
-    { test: /\.svg$/, loader: 'url?limit=65000&mimetype=image/svg+xml&name=[name]-[hash].[ext]' },
-    { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=65000&mimetype=application/font-woff&name=../fonts/[name]-[hash].[ext]' }
     //{ test: /\.woff2$/, loader: 'url?limit=65000&mimetype=application/font-woff2&name=[name]-[hash].[ext]' }
     ]
   }
@@ -97,8 +108,8 @@ delete injectPageConfig.hotMiddleware;
 delete injectPageConfig.module.loaders[0].query;
 injectPageConfig.plugins.shift(); // remove HotModuleReplacementPlugin
 injectPageConfig.output = {
-  path: path.join(__dirname, '../dev/js'),
-  filename: 'inject.bundle.js',
+  path: path.join(__dirname, '../dev/'),
+  filename: 'js/inject.bundle.js',
 };
 const appConfig = baseDevConfig();
 

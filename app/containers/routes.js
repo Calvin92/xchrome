@@ -4,7 +4,7 @@ import {
   IndexRoute,
 } from 'react-router';
 
-require('../components/fonts');
+//require('../components/fonts');
 
 import Home from '../components/layout/home';
 import Posts from '../components/layout/posts';
