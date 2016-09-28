@@ -4,8 +4,7 @@
   "manifest_version": 2,
   "description": "A Chrome Extension built by Aotu.io for providing Web Development Staffs",
   "browser_action": {
-    "default_title": "凹凸实验室",
-    "default_popup": "popup.html"
+    "default_title": "凹凸实验室"
   },
   "icons": {
     "16": "img/icon-16.png",

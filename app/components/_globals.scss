@@ -4,7 +4,7 @@
 @import "~react-toolbox/colors";
 @import "~react-toolbox/globals";
 @import "~react-toolbox/mixins";
-//@import "./theme/theme";
+@import "./theme/_theme";
 
 $unit: 1rem;
 $color-primary-dark: $color-primary-dark;

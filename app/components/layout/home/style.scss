@@ -7,12 +7,18 @@ $content-offset: 4.8 * $unit;
 $content-width: 740px;
 
 .header {
+  position: relative;
   padding: 0 calc((100% - #{$hero-max-width}) / 2);
   color: $hero-text-color;
   text-align: center;
   background: linear-gradient(45deg, $hero-gradient-dark 0%, $hero-gradient-light 100%);
   background-position: top right;
   background-size: 120%;
+  .login {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+  }
   .logo {
     width: $hero-logo-size;
     height: $hero-logo-size;

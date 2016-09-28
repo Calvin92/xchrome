@@ -6,7 +6,7 @@ const Navigation = (props) => {
     <nav className={props.className}>
       <ul>
         <li><Link activeClassName={props.activeClassName} to='/posts'>Posts</Link></li>
-        <li><a href='//github.com/o2team/app' target='_blank'>Github</a></li>
+        <li><a href='https://github.com/o2team/app' target='_blank'>Github</a></li>
       </ul>
     </nav>
   );

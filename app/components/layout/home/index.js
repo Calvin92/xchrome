@@ -8,7 +8,9 @@ import { Card, CardTitle, CardMedia, CardText, CardActions } from 'react-toolbox
 import Logo from '../../logo';
 import Navigation from '../../navigation';
 import Footer from '../../footer';
-import style from './style';
+import style from './style'; 
+
+import {get, post} from '../../../utils/http';
 
 const GithubIcon = () => (
   <svg viewBox="0 0 284 277">
@@ -16,42 +18,55 @@ const GithubIcon = () => (
   </svg>
 );
 
+class Home extends React.Component {
 
-const Home = () => (
-  <article>
-    <header className={style.header}>
-      <Logo className={style.logo} />
-      <h2 className={style.title}>Open Oriented</h2>
-      <h4 className={style.subtitle}>最优质互联网专业资讯、工具、应用、开源项目分享</h4>
-      <Navigation className={style.navigation} />
-    </header>
+  // componentDidMound() {
+  //   get()
+  // }
+  // 
+  // githubLogin
 
-    <section className={`${style.content}`}>
-      <h3>About the authors</h3>
-      <ul className={style.authors}>
-        <Card className={style.author}>
-          <CardMedia aspectRatio='wide' image='/images/javivelasco.jpg' />
-          <CardTitle title="Javi Velasco" subtitle="@javivelasco" />
-          <CardText>Software gardener • Film, music & comic lover • Frontend Engineer at Audiense  • Any biographer in the room?</CardText>
-          <CardActions>
-            <Button href='http://github.com/javivelasco' target='_blank'><GithubIcon /> Github</Button>
-          </CardActions>
-        </Card>
+  render() {
+    return (
+      <article>
+        <header className={style.header}>
+          <div className={style.login}>
+            <button>github登陆</button>
+          </div>
+          <Logo className={style.logo} />
+          <h2 className={style.title}>Open Oriented</h2>
+          <h4 className={style.subtitle}>最优质互联网专业资讯、工具、应用、开源项目分享</h4>
+          <Navigation className={style.navigation} />
+        </header>
 
-        <Card className={style.author}>
-          <CardMedia aspectRatio='wide' image='/images/soyjavi.jpg' />
-          <CardTitle title="Javi Jiménez" subtitle="@soyjavi" />
-          <CardText>Creative Doer · A complicated #human who builds stuff · #author · #opensource lover · #traveller · with a dark past being CEO & CTO</CardText>
-          <CardActions>
-            <Button href='http://github.com/soyjavi' target='_blank'><GithubIcon /> Github</Button>
-          </CardActions>
-        </Card>
-      </ul>
-    </section>
+        <section className={`${style.content}`}>
+          <h3>About the authors</h3>
+          <ul className={style.authors}>
+            <Card className={style.author}>
+              <CardMedia aspectRatio='wide' image='/images/javivelasco.jpg' />
+              <CardTitle title="Javi Velasco" subtitle="@javivelasco" />
+              <CardText>Software gardener • Film, music & comic lover • Frontend Engineer at Audiense  • Any biographer in the room?</CardText>
+              <CardActions>
+                <Button href='http://github.com/javivelasco' target='_blank'><GithubIcon /> Github</Button>
+              </CardActions>
+            </Card>
 
-    <Footer />
+            <Card className={style.author}>
+              <CardMedia aspectRatio='wide' image='/images/soyjavi.jpg' />
+              <CardTitle title="Javi Jiménez" subtitle="@soyjavi" />
+              <CardText>Creative Doer · A complicated #human who builds stuff · #author · #opensource lover · #traveller · with a dark past being CEO & CTO</CardText>
+              <CardActions>
+                <Button href='http://github.com/soyjavi' target='_blank'><GithubIcon /> Github</Button>
+              </CardActions>
+            </Card>
+          </ul>
+        </section>
 
-  </article>
-);
+        <Footer />
+
+      </article>
+    )
+  }
+}
 
 export default Home;

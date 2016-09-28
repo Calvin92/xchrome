@@ -31,9 +31,9 @@ const baseDevConfig = () => ({
     chunkFilename: 'js/[id].chunk.js'
   },
   postcss: [autoprefixer],
-  sassLoader: {
-    data: '@import "' + path.resolve(__dirname, '../app/components/theme/_theme.scss') + '";'
-  },
+  // sassLoader: {
+  //   data: '@import "' + path.resolve(__dirname, '../app/components/theme/_theme.scss') + '";'
+  // },
   plugins: [
     new ExtractTextPlugin('css/[name].css', { allChunks: true }),
     new webpack.HotModuleReplacementPlugin(),
