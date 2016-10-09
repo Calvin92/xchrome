@@ -28,6 +28,7 @@
     "management", 
     "tabs", 
     "storage", 
+    "identity",
     "https://aotu.io/*",
     "https://github.com/*"
   ],

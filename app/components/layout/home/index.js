@@ -16,6 +16,10 @@ import style from './style';
 
 class Home extends React.Component {
 
+  githubLogin() {
+    chrome.extension.getBackgroundPage().performGithubLogin();
+  }
+
   render() {
     return (
       <article className={style.wrapper}>
@@ -26,7 +30,7 @@ class Home extends React.Component {
           <div>
             <hr className={style['pro-subpage-seperator']} />
             <p>淡氧是一个私人订制的网站聚合订阅器，同时它也是轻氧APP的桌面版本，使用Github账号登录，淡氧将随时同步你的订制数据到Gist上。</p>
-            <div className={style['welcome-buttons']}>
+            <div className={style['welcome-buttons']} onClick={::this.githubLogin}>
               <Button label="Github登录" className={style['green-btn']} />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <Button label="暂不登录" className={style['normal-btn']}  />
             </div>
