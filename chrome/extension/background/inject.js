@@ -40,3 +40,22 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
 
   loadScript('inject', tabId, () => console.log('load inject bundle success!'));
 });
+
+// 点击插件图标后打开一个新的淡氧页
+chrome.browserAction.onClicked.addListener( activeTab => {
+    var newURL = 'chrome://newtab';
+    chrome.tabs.create({ url: newURL });
+});
+
+
+// github授权登录
+global.performGithubLogin =  function() {
+  chrome.identity.launchWebAuthFlow(
+  {
+    'url': 'https://github.com/login/oauth/authorize?client_id=85a777c4a850b8317186&redirect_uri=https://jphgojmfhbhdecmlkjphmjkgadnbkela/chromiumapp.org/index.html&state=123', 
+    'interactive': true
+  },
+  redirect_url => {
+    console.log(redirect_url);
+  });
+}

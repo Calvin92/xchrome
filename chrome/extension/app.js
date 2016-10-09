@@ -18,12 +18,6 @@ window.Perf = require('react-addons-perf');
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
-chrome.browserAction.onClicked.addListener(function(activeTab)
-{
-    var newURL = 'chrome://newtab';
-    chrome.tabs.create({ url: newURL });
-});
-
 chrome.storage.local.get('state', obj => {
   const { state } = obj;
   const initialState = JSON.parse(state || '{}');

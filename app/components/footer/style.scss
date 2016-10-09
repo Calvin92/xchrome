@@ -1,9 +1,11 @@
 @import "../globals";
 .footer {
+  width: 100%;
   padding: 2 * $unit 0;
   color: $color-content;
   text-align: center;
   background-color: $color-text;
+  z-index: 999;
   .love {
     font-size: $font-size-normal;
     color: $color-accent;

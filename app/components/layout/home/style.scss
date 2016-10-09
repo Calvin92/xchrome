@@ -2,9 +2,61 @@
 @import "../../globals";
 @import "./config";
 
-$twitter-color: #55acee;
+$github-color: #00d061;
 $content-offset: 4.8 * $unit;
 $content-width: 740px;
+$normal-text-color: #2a3e52;
+
+.wrapper {
+  height: 100%;
+  width: 100%;
+  padding-top: 40px;
+  text-align: center;
+
+  .pro-container {
+    position: relative; 
+    width: 420px; 
+    z-index: 999;
+    margin: 0 auto;
+    height: 100%;
+    color: $normal-text-color;
+
+    .subtitle {
+      font-size: 32px;
+      color: $normal-text-color;
+      text-transform: none;
+      margin: 0 0 8px 0;
+    }
+
+    .pro-subpage-seperator {
+      width: 70%;
+      height: 1px;
+      background: #a3b9c5;
+      border: none;
+      margin: 20px auto;
+    }
+
+    .welcome-buttons {
+      padding: 8px 0;
+
+      .green-btn {
+        background-color: $github-color;
+        color: #ffffff;
+      }
+
+      .normal-btn {
+        border: 1px solid $normal-text-color;
+      }
+    }
+
+  }
+
+  .fixed-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+  }
+}
 
 .header {
   position: relative;
@@ -88,7 +140,7 @@ $content-width: 740px;
       margin: 0 $unit;
     }
     .twitter {
-      color: $twitter-color !important;
+      color: $github-color !important;
     }
   }
   > p {

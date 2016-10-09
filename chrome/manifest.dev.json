@@ -11,8 +11,11 @@
     "48": "img/icon-48.png",
     "128": "img/icon-128.png"
   },
+  // index.html必须要加上，否则
+  // github登录之后重定向不回来（about:blank）
   "web_accessible_resources": [
-    "inject.html"
+    "inject.html",
+    "index.html"
   ],
   "background": {
     "page": "background.html"
@@ -20,6 +23,13 @@
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
-  "permissions": [ "contextMenus", "management", "tabs", "storage", "https://aotu.io/*" ],
-  "content_security_policy": "default-src 'self'; script-src 'self' http://localhost:3000 https://localhost:3000 'unsafe-eval'; connect-src http://localhost:3000 https://localhost:3000; style-src * 'unsafe-inline' 'self' blob:; img-src 'self' data:; font-src 'self' data:;"
+  "permissions": [ 
+    "contextMenus", 
+    "management", 
+    "tabs", 
+    "storage", 
+    "https://aotu.io/*",
+    "https://github.com/*"
+  ],
+  "content_security_policy": "default-src 'self'; script-src 'self' http://localhost:3000 https://localhost:3000 'unsafe-eval'; connect-src http://localhost:3000 https://localhost:3000 https://github.com; style-src * 'unsafe-inline' 'self' blob:; img-src 'self' data:; font-src 'self' data:;"
 }

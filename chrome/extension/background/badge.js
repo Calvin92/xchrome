@@ -1,3 +1,4 @@
+// 插件icon旁的标记数字，以显示插件的状态信息等～
 chrome.storage.local.get('todos', (obj) => {
   let todos = obj.todos;
   if (todos) {
