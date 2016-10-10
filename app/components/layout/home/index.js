@@ -16,8 +16,14 @@ import style from './style';
 
 class Home extends React.Component {
 
+  componentDidMount() {
+    chrome.runtime.onMessage.addListener( message => {
+      console.log(message);
+    });
+  }
+
   githubLogin() {
-    chrome.extension.getBackgroundPage().performGithubLogin();
+    chrome.runtime.sendMessage({type: 'getUserInfo'});
   }
 
   render() {

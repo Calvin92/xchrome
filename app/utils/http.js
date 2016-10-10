@@ -8,6 +8,7 @@ export function post(url, data, useJSON = true) {
     return fetch(url, {
         method: 'POST',
         headers: {
+            'Accept': 'application/json',
             'Content-Type': contentType
         },
         // credentials: 'include',

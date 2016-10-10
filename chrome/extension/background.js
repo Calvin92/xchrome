@@ -29,4 +29,5 @@ promisifyAll(chrome.storage, [
 
 require('./background/contextMenus');
 require('./background/inject');
+require('./background/oAuth2');
 // require('./background/badge');

@@ -1,3 +1,6 @@
+import querystring from 'querystring';
+import {post} from '../../../app/utils/http.js';
+
 function isInjected(tabId) {
   return chrome.tabs.executeScriptAsync(tabId, {
     code: `var injected = window.reactExampleInjected;
@@ -42,30 +45,11 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
 });
 
 // 点击插件图标后打开一个新的淡氧页
-chrome.browserAction.onClicked.addListener( activeTab => {
-    var newURL = 'chrome://newtab';
-    chrome.tabs.create({ url: newURL });
-});
-
-
-// github授权登录
-global.performGithubLogin =  function() {
-  chrome.identity.launchWebAuthFlow({
-    'url': 'https://github.com/login/oauth/authorize?client_id=85a777c4a850b8317186&redirect_uri=https://jphgojmfhbhdecmlkjphmjkgadnbkela/chromiumapp.org/index.html&state=123', 
-    'interactive': true
-  },
-  redirectURL => {
-    console.log(redirectURL);
-    // var q = redirectURL.substr(redirectURL.indexOf('#')+1);
-    // var parts = q.split('&');
-    // for (var i = 0; i < parts.length; i++) {
-    //   var kv = parts[i].split('=');
-    //   if (kv[0] == 'access_token') {
-    //     console.log('token is', token);
-    //     chrome.storage.sync.set({'access_token': kv[1]});
-    //   }
-    // }
+chrome.browserAction.onClicked.addListener( () => {
+  chrome.tabs.create({
+    "url": chrome.extension.getURL("index.html")
   });
-}
+} );
+
   
 
