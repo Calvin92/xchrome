@@ -8,6 +8,7 @@ import {
 
 import Home from '../components/layout/home';
 import Posts from '../components/layout/posts';
+import ReadingApp from '../components/layout/reading';
 
 
 /**
@@ -21,8 +22,7 @@ import Posts from '../components/layout/posts';
  */
 const AppRoutes = (
   <Route path="/" component={Home}>
-    <IndexRoute component={Home} />
-    <Route path="/posts" component={Posts} />
+    <Route path="reading" component={ReadingApp} />
   </Route>
 );
 

@@ -1,10 +1,14 @@
 import { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect, Provider } from 'react-redux';
-import { Router } from 'react-router';
+import { Router, Route } from 'react-router';
 
 import * as PostsActions from '../actions/posts';
 import appRoutes from './routes';
+
+import Home from '../components/layout/home';
+import Posts from '../components/layout/posts';
+import ReadingApp from '../components/layout/reading';
 
 
 @connect(
@@ -25,6 +29,10 @@ export default class App extends Component {
     actions: PropTypes.object.isRequired
   };
 
+  componentDidMount() {
+
+  }
+
   render() {
     const { state, actions, history, store } = this.props;
 
@@ -32,9 +40,10 @@ export default class App extends Component {
       <Provider store={store}>
         <Router
           history={history}
-          onUpdate={() => window.scrollTo(0, 0)}
-          routes={appRoutes}
-        />
+          onUpdate={() => window.scrollTo(0, 0)}>
+          <Route path="/" component={Home} />
+          <Route path="/reading" component={ReadingApp} />
+        </Router>
       </Provider>
     );
   }

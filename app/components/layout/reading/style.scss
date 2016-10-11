@@ -1,0 +1,53 @@
+@import "../../fonts/style";
+@import "../../globals";
+// @import "./config";
+// 
+
+$border-color: #CCCCCC;
+
+.wrapper {
+	height: 100%;
+	position: relative;
+
+	& > header {
+		position: absolute;
+		height: 50px;
+		width: 100%;
+		top: 0;
+		left: 0;
+		z-index: 999;
+		border-bottom: 1px solid $border-color;
+	}
+
+	.main-container {
+		display: flex;
+		padding-top: 50px;
+		height: 100%;
+
+		& > .left-pannel {
+			width: 250px;	
+			border-right: 1px solid $border-color;	
+		}
+
+		& > .middle-pannel {
+			width: 350px;
+			height: 100%;
+			overflow-y: auto;
+			border-right: 1px solid $border-color;
+		}
+
+		.right-pannel {
+			flex: 1;
+		}
+	}
+
+}
+
+// fragement
+.custom-logo {
+	width: 3 * $unit;
+	height: 3 * $unit;
+	position: absolute;
+	top: 6px;
+	left: 20px;
+}
