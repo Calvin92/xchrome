@@ -1,8 +1,8 @@
 export default function autoFeeds(state = [
-		{avatar: '', name: 'aotu lib', article: []},
-		{avatar: '', name: 'aotu lib',article: []},
-		{avatar: '', name: 'aotu lib', article: []},
-		{avatar: '', name: 'aotu lib', article: []}
+		{avatar: '', name: 'aotu lib', articles: [{caption: 'nihaofjdkfjkdjfjd', legend: 'fjdkjfkdjkfjdkl'},{caption: 'nihaofjdkfjkdjfjd', legend: 'fjdkjfkdjkfjdkl'},{caption: 'nihaofjdkfjkdjfjd', legend: 'fjdkjfkdjkfjdkl'},{caption: 'nihaofjdkfjkdjfjd', legend: 'fjdkjfkdjkfjdkl'},{caption: 'nihaofjdkfjkdjfjd', legend: 'fjdkjfkdjkfjdkl'}]},
+		{avatar: '', name: 'aotu lib',articles: [{caption: 'fdsfdsewtew34132', legend: '412353twfdsafetf'},{caption: 'fdsfdsewtew34132', legend: '412353twfdsafetf'},{caption: 'fdsfdsewtew34132', legend: '412353twfdsafetf'},{caption: 'fdsfdsewtew34132', legend: '412353twfdsafetf'},{caption: 'fdsfdsewtew34132', legend: '412353twfdsafetf'}]},
+		{avatar: '', name: 'aotu lib', articles: [{caption: '4328rfhewit9832r', legend: '32789rejfhdshfisua'},{caption: '4328rfhewit9832r', legend: '32789rejfhdshfisua'},{caption: '4328rfhewit9832r', legend: '32789rejfhdshfisua'},{caption: '4328rfhewit9832r', legend: '32789rejfhdshfisua'},{caption: '4328rfhewit9832r', legend: '32789rejfhdshfisua'}]},
+		{avatar: '', name: 'aotu lib', articles: [{caption: '5723489thfjhfus', legend: '47832tyhfjdhfiudhi328rqwefa'},{caption: '5723489thfjhfus', legend: '47832tyhfjdhfiudhi328rqwefa'},{caption: '5723489thfjhfus', legend: '47832tyhfjdhfiudhi328rqwefa'},{caption: '5723489thfjhfus', legend: '47832tyhfjdhfiudhi328rqwefa'}]}
 ], action) {
 	return state;
 }

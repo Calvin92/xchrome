@@ -19,8 +19,9 @@ window.Perf = require('react-addons-perf');
 injectTapEventPlugin();
 
 chrome.storage.local.get('state', obj => {
-  const { state } = obj;
-  const initialState = JSON.parse(state || '{}');
+  // const { state } = obj;
+  // console.log(state);
+  const initialState = JSON.parse('{}');
   const store = createStore(initialState);
   const history = syncHistoryWithStore(hashHistory, store);
 
