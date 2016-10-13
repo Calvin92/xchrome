@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 import style from './style';
 import Logo from '../../logo';
@@ -13,8 +14,14 @@ class ReadingApp extends React.Component {
 		this.state = {
 			ifrmaeSrc: '',
 			activeTabIndexForFeeds: 0,
-			articlesList: []
+			articlesList: [],
+			showAddIconForAotuFeeds: false,
+			showAddIconForCustomFeeds: false
 		}
+	}
+
+	componentDidMount() {
+		this.setState({articlesList: this.props.feeds.aotuFeeds[0].articles});
 	}
 
 	changeIframeUrl() {
@@ -25,12 +32,26 @@ class ReadingApp extends React.Component {
 		const { aotuFeeds, customFeeds} = this.props.feeds;
 		this.setState({
 			activeTabIndexForFeeds: index, 
-			articlesList: index >= aotuFeeds.length ? customFeeds[index - aotuFeeds.length].articles : aotuFeeds[index].articles
+			articlesList: index >= aotuFeeds.length ? 
+											customFeeds[index - aotuFeeds.length].articles 
+											: aotuFeeds[index].articles
 		});
 	}
 
-	componentDidMount() {
-		this.setState({articlesList: this.props.feeds.aotuFeeds[0].articles});
+	handleMouseOver(type) {
+		if (type == 'auto') {
+			this.setState({showAddIconForAotuFeeds: true})
+		} else {
+			this.setState({showAddIconForCustomFeeds: true});
+		}
+	}
+
+	handleMouseOut(type) {
+		if (type == 'auto') {
+			this.setState({showAddIconForAotuFeeds: false})
+		} else {
+			this.setState({showAddIconForCustomFeeds: false});
+		}
 	}
 
 	render() {
@@ -65,11 +86,15 @@ class ReadingApp extends React.Component {
 				<section className={style['main-container']}>
 					<div className={style['left-pannel']}>
 						<List selectable ripple>
+							<Link to='/add-feeds'>
+								<span className={style['feeds-list-add']}>+</span>
+							</Link>
 					    <ListSubHeader caption='Explore characters' />
 					    {aotuFeedsList}
 					  </List>
 
 					  <List selectable ripple>
+					  	<span className={style['feeds-list-add']}>+</span>
 					    <ListSubHeader caption='custom feeds' />
 					    {customFeedsList}
 					  </List>

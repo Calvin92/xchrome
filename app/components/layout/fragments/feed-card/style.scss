@@ -1,0 +1,17 @@
+$card-padding: 12px;
+$card-width: 260px;
+$card-height: 124px;
+$card-border-radius: 2px;
+$card-background-color: #888888;
+$card-margin: 20px;
+
+.feed-card-container {
+	position: relative;
+	padding: $card-padding;
+	width: $card-width;
+	height: $card-height;
+	margin: $card-margin;
+	border-radius: $card-border-radius;
+	background: $card-background-color;
+}
+

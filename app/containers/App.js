@@ -9,6 +9,7 @@ import appRoutes from './routes';
 import Home from '../components/layout/home';
 import Posts from '../components/layout/posts';
 import ReadingApp from '../components/layout/reading';
+import FeedsStoreApp from '../components/layout/feeds_store';
 
 
 @connect(
@@ -21,13 +22,6 @@ import ReadingApp from '../components/layout/reading';
 )
 
 export default class App extends Component {
-
-  static propTypes = {
-    store: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired,
-    state: PropTypes.object.isRequired,
-    actions: PropTypes.object.isRequired
-  };
 
   componentDidMount() {
 
@@ -43,9 +37,18 @@ export default class App extends Component {
           onUpdate={() => window.scrollTo(0, 0)}>
           <Route path="/" component={Home} />
           <Route path="/reading" component={ReadingApp} />
+          <Route path="/add-feeds" component={FeedsStoreApp} />
         </Router>
       </Provider>
     );
   }
+}
+
+
+App.propTypes = {
+  store: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+  state: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired
 }
 
