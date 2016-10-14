@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 
 import style from './style';
 import Logo from '../../logo';
+import FeedsListApp from '../fragments/feeds-list';
 import { List, ListItem, ListSubHeader } from 'react-toolbox/list';
 
 /* 登录后的首页 */
@@ -84,22 +85,7 @@ class ReadingApp extends React.Component {
 					<Logo fillColor="#333333" className={style['custom-logo']} />
 				</header>
 				<section className={style['main-container']}>
-					<div className={style['left-pannel']}>
-						<List selectable ripple>
-							<Link to='/add-feeds'>
-								<span className={style['feeds-list-add']}>+</span>
-							</Link>
-					    <ListSubHeader caption='Explore characters' />
-					    {aotuFeedsList}
-					  </List>
-
-					  <List selectable ripple>
-					  	<span className={style['feeds-list-add']}>+</span>
-					    <ListSubHeader caption='custom feeds' />
-					    {customFeedsList}
-					  </List>
-				  </div>
-
+					<FeedsListApp addIcon={true} />
 				 	<div className={style['middle-pannel']}>
 						<List selectable ripple>
 					    {articlesList}
