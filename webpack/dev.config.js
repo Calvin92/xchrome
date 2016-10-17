@@ -96,6 +96,12 @@ const baseDevConfig = () => ({
       }
     //{ test: /\.woff2$/, loader: 'url?limit=65000&mimetype=application/font-woff2&name=[name]-[hash].[ext]' }
     ]
+  },
+  node: {
+    console: true,
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty'
   }
 });
 

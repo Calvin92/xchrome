@@ -6,6 +6,9 @@ import style from './style.scss';
 
 import { List, ListSubHeader, ListItem } from 'react-toolbox/list';
 
+// Pass this React Element to ListItem as itemContent props
+const ItemContent = (props) => (<p>{props.name}</p>);
+
 class FeedsListApp extends React.Component {
 
 	constructor(props) {
@@ -36,7 +39,7 @@ class FeedsListApp extends React.Component {
 		const { aotuFeeds, customFeeds } = this.props.feeds;
 		const aotuFeedsList = this.props.feeds.aotuFeeds.map( (item, index) => 
 			<ListItem 
-				itemContent={item.name} 
+				itemContent={<ItemContent name={item.name} />} 
 				key={index} 
 				onClick={this.props.clickAotuFeedsHandler}
 				className={this.state.iconDirectionForAotu == style.down ? style['show-list'] : style['hide-list']}
@@ -44,7 +47,7 @@ class FeedsListApp extends React.Component {
 		);
 		const customFeedsList = this.props.feeds.customFeeds.map( (item, index) => 
 			<ListItem 
-				itemContent={item.name}
+				itemContent={<ItemContent name={item.name} />}
 				key={index}
 				onClick={this.props.clickRSSFeedsHandler}
 				className={this.state.iconDirectionForRSS == style.down ? style['show-list'] : style['hide-list']}

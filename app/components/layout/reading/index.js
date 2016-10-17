@@ -7,6 +7,7 @@ import Logo from '../../logo';
 import FeedsListApp from '../fragments/feeds-list';
 import { List, ListItem, ListSubHeader } from 'react-toolbox/list';
 
+
 /* 登录后的首页 */
 class ReadingApp extends React.Component {
 
@@ -23,6 +24,8 @@ class ReadingApp extends React.Component {
 
 	componentDidMount() {
 		this.setState({articlesList: this.props.feeds.aotuFeeds[0].articles});
+		// const url = 'http://www.ruanjiawei.com/atom.xml';
+		// spider.fetchRss(url).then(function(data) {console.log(data)});
 	}
 
 	changeIframeUrl() {
@@ -57,22 +60,7 @@ class ReadingApp extends React.Component {
 
 	render() {
 		const { aotuFeeds, customFeeds } = this.props.feeds;
-		const aotuFeedsList = this.props.feeds.aotuFeeds.map( (item, index) => 
-			<ListItem 
-				itemContent={item.name} 
-				key={index} 
-				onClick={this.setActiveTabForFeeds.bind(this, index)}
-				className={this.state.activeTabIndexForFeeds == index ? style['active-feeds-item'] : ''}
-				avatar='https://dl.dropboxusercontent.com/u/2247264/assets/m.jpg' /> 
-		);
-		const customFeedsList = this.props.feeds.customFeeds.map( (item, index) => 
-			<ListItem 
-				itemContent={item.name}
-				key={index}
-				onClick={this.setActiveTabForFeeds.bind(this, index + customFeeds.length)}
-				className={this.state.activeTabIndexForFeeds == (index + customFeeds.length) ? style['active-feeds-item'] : ''}
-				avatar='https://dl.dropboxusercontent.com/u/2247264/assets/m.jpg' />
-		);
+
 		const articlesList = this.state.articlesList.map( (item, index) =>
 			<ListItem 
 				caption={item.caption}

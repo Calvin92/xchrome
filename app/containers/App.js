@@ -47,8 +47,6 @@ export default class App extends Component {
 
 App.propTypes = {
   store: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
-  state: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired
 }
 
